@@ -1,0 +1,31 @@
+main: com.herocc.bukkit.core.Core
+
+name: '@Name@'
+version: '@Version@'
+description: "@Description@"
+
+author: '@Author@'
+
+commands:
+   head:
+      description: "Summon a Head"
+      usage: "/<command> [player] [target]"
+      permission: core.head
+      permission-message: "Sorry, you aren't allowed to summon Heads"
+      aliases: skull
+
+permissions:
+  core.*:
+    description: "Gives access to all of Core's functions and commands"
+    default: op
+    children:
+      core.head: true
+  core.head:
+    description: "Allows you to summon and give player heads"
+    children:
+      core.head.give: true
+      core.head.get: true
+  core.head.get:
+    description: "Allows you to summon your own heads"
+  core.head.give:
+    description: "Allows you to give other players someones heads"

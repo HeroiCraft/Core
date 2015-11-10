@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.7
+version = '0.0.1'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://hub.spigotmc.org/nexus/content/groups/public' }
+}
+
+dependencies {
+    compile group: 'org.bukkit', name: 'bukkit', version: '1.8.8-R0.1-SNAPSHOT'
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+    }
+}
+
+ext {
+    // Placeholders for configuration filtering
+    description = 'Core utilities for HeroiCraft'
+    author = 'HeroCC <https://herocc.com>'
+
+    javaPackage = 'com.herocc.bukkit.core'
+    resourceTokens = [
+            'Name'   : rootProject.name,
+            'Description': description,
+            'Version': version,
+            'Author' : author
+    ];
+}
+
+processResources {
+    include 'plugin.yml'
+    include 'config.yml'
+    include 'Reference.java'
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: resourceTokens
+}
