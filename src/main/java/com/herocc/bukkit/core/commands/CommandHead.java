@@ -20,8 +20,8 @@ public class CommandHead implements CommandExecutor {
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     if (cmd.getName().equalsIgnoreCase("head")) {
-      if (sender.hasPermission("core.head")) {
-        if (args.length == 0 || args.length == 1) {
+      if (args.length == 0 || args.length == 1) {
+        if (sender.hasPermission("core.head.get")) {
           if (sender instanceof Player) {
             Player player = (Player) sender;
             if (args.length == 0) {skullName = (player.getName());} else {skullName = args[0];}
@@ -32,18 +32,25 @@ public class CommandHead implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Please specify a player and target");
             return false;
           }
-        } else if (args.length == 2){
-          @SuppressWarnings( "deprecation" )
+        } else {
+          sender.sendMessage(ChatColor.RED + "Sorry, you don't have permission to summon heads!");
+        }
+      } else if (args.length == 2) {
+        if (sender.hasPermission("core.head.give")) {
+          @SuppressWarnings("deprecation")
           Player target = plugin.getServer().getPlayer(args[1]);
-          if (target != null) {
+          if (target == null) {
+            sender.sendMessage(ChatColor.RED + args[1] + " is not online!");
+            return true;
+          } else {
             skullName = args[0];
             target.getInventory().setItem(target.getInventory().firstEmpty(), setHead(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), skullName));
             sender.sendMessage(ChatColor.GREEN + "Gave " + skullName + "'s head to " + target.getName() + "!");
             return true;
-          } else {
-            sender.sendMessage(ChatColor.RED + args[1] + " is not online!");
-            return true;
           }
+        } else {
+          sender.sendMessage(ChatColor.RED + "Sorry, you don't have permission to give heads!");
+          return true;
         }
       }
     }
