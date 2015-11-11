@@ -26,10 +26,10 @@ ext {
 
     javaPackage = 'com.herocc.bukkit.core'
     resourceTokens = [
-            'Name'   : rootProject.name,
-            'Description': description,
-            'Version': version,
-            'Author' : author
+        'Name'   : rootProject.name,
+        'Description': description,
+        'Version': version,
+        'Author' : author
     ];
 }
 
