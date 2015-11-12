@@ -13,9 +13,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 public class CommandHead implements CommandExecutor {
   private final Core plugin;
   String skullName;
-  public CommandHead(Core plugin) {
-    this.plugin = plugin;
-  }
+  public CommandHead(Core plugin) { this.plugin = plugin; }
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -45,7 +43,7 @@ public class CommandHead implements CommandExecutor {
           } else {
             skullName = args[0];
             target.getInventory().setItem(target.getInventory().firstEmpty(), setHead(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), skullName));
-            sender.sendMessage(ChatColor.GREEN + "Gave " + skullName + "'s head to " + target.getName() + "!");
+            sender.sendMessage(ChatColor.GREEN + "Gave " + skullName + "'s head to " + target.getDisplayName() + ChatColor.GREEN + "!");
             return true;
           }
         } else {

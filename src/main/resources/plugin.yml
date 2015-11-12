@@ -7,10 +7,14 @@ description: "@Description@"
 author: '@Author@'
 
 commands:
-   head:
-      description: "Summon a Head"
-      usage: "/<command> [player] [target]"
-      aliases: skull
+  head:
+    description: "Summon a Head"
+    usage: "/<command> [player] [target]"
+    aliases: skull
+  fly:
+    description: "Fly, regardless of GameMode"
+    usage: "/<command> [player] [speed]"
+
 
 permissions:
   core.*:
@@ -18,6 +22,7 @@ permissions:
     default: op
     children:
       core.head: true
+      core.fly: true
   core.head:
     description: "Allows you to summon and give player heads"
     children:
@@ -27,3 +32,12 @@ permissions:
     description: "Allows you to summon your own heads"
   core.head.give:
     description: "Allows you to give other players someones heads"
+  core.fly:
+    description: "Allows you to set others and yourself to fly"
+    children:
+      core.fly.self: true
+      core.fly.others: true
+  core.fly.self:
+    description: "Allows you to toggle your own flight mode"
+  core.fly.others:
+    description: "Allows you to toggle other people's flight mode"
