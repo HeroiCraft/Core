@@ -14,6 +14,10 @@ commands:
   fly:
     description: "Fly, regardless of GameMode"
     usage: "/<command> [player] [speed]"
+  freeze:
+    description: "Prevent a player from moving until they are unfrozen"
+    usage: "/<command> <player>"
+    aliases: unfreeze
 
 
 permissions:
@@ -23,6 +27,7 @@ permissions:
     children:
       core.head: true
       core.fly: true
+      core.freeze: true
   core.head:
     description: "Allows you to summon and give player heads"
     children:
@@ -41,3 +46,5 @@ permissions:
     description: "Allows you to toggle your own flight mode"
   core.fly.others:
     description: "Allows you to toggle other people's flight mode"
+  core.freeze:
+    description: "Allows you to freeze and unfreeze other players"
