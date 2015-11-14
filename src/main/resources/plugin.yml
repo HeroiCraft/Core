@@ -18,6 +18,9 @@ commands:
     description: "Prevent a player from moving until they are unfrozen"
     usage: "/<command> <player>"
     aliases: unfreeze
+  core:
+    desctiption: "Information about Core"
+    usage: "/<command>"
 
 
 permissions:
