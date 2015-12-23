@@ -21,6 +21,9 @@ commands:
   core:
     desctiption: "Information about Core"
     usage: "/<command>"
+  sudo:
+    description: "Chat and use commands as other players"
+    usage: "/<command> <player> <commands / messages>"
 
 
 permissions:
@@ -31,6 +34,7 @@ permissions:
       core.head: true
       core.fly: true
       core.freeze: true
+      core.sudo: true
   core.head:
     description: "Allows you to summon and give player heads"
     children:
@@ -51,3 +55,5 @@ permissions:
     description: "Allows you to toggle other people's flight mode"
   core.freeze:
     description: "Allows you to freeze and unfreeze other players"
+  core.sudo:
+    description: "Allows you to execute commands as other players"

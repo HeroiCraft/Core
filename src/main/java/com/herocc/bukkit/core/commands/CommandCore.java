@@ -15,6 +15,7 @@ public class CommandCore implements CommandExecutor {
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     if (cmd.getName().equalsIgnoreCase("core")) {
       sender.sendMessage(ChatColor.GREEN + "Core version: " + Reference.VERSION + "!");
+      return true;
     }
     return false;
   }
