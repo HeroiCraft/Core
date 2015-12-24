@@ -31,11 +31,11 @@ public class FreezeAPI {
 
   public void unfreezeAll(Boolean alert) {
     plugin.getLogger().info("Unfreezing all players...");
-    for(int i = 0; i < frozen.size(); i++){
-      Player player = plugin.getServer().getPlayer(frozen.get(i));
+    for (UUID uuid : frozen) {
+      Player player = plugin.getServer().getPlayer(uuid);
       unfreezePlayer(player);
       plugin.getLogger().info("Unfroze " + player.getDisplayName());
-      if(alert){
+      if (alert) {
         player.sendMessage(ChatColor.GREEN + "All players are now unfrozen!");
       }
     }

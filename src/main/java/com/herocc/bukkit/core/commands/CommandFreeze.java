@@ -47,7 +47,7 @@ public class CommandFreeze implements CommandExecutor {
     if (player == null) {
       sender.sendMessage(ChatColor.RED + name + " is not online!");
     } else {
-      if (api.frozen.contains(player.getUniqueId())) {
+      if (FreezeAPI.frozen.contains(player.getUniqueId())) {
         api.unfreezePlayer(player);
         sender.sendMessage(ChatColor.DARK_GREEN + "Unfroze " + ChatColor.GREEN + player.getDisplayName() + ChatColor.GREEN + "!");
         player.sendMessage(ChatColor.GREEN + "You are now unfrozen!");
