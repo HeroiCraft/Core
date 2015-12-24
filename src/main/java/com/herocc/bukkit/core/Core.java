@@ -1,9 +1,11 @@
 package com.herocc.bukkit.core;
 
+import com.herocc.bukkit.core.api.FreezeAPI;
 import com.herocc.bukkit.core.commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin {
+  FreezeAPI freeze = new FreezeAPI(this);
 
   @Override
   public void onEnable() {
@@ -16,6 +18,6 @@ public class Core extends JavaPlugin {
 
   @Override
   public void onDisable() {
-
+    freeze.unfreezeAll(false);
   }
 }
