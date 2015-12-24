@@ -23,7 +23,7 @@ commands:
     usage: "/<command>"
   sudo:
     description: "Chat and use commands as other players"
-    usage: "/<command> <player> <commands / messages>"
+    usage: "/<command> <player> <input>"
 
 
 permissions:

@@ -28,7 +28,8 @@ public class CommandSudo implements CommandExecutor {
           input = input.trim();
           boolean isCommand = input.startsWith("/");
           if (subject == null) {
-            sender.sendMessage(ChatColor.RED + "Player " + args[0] + " isn't online right now!");
+            sender.sendMessage(ChatColor.RED + args[0] + " isn't online right now!");
+            return true;
           } else {
             if (isCommand) {
               input = input.substring(1);
@@ -42,7 +43,7 @@ public class CommandSudo implements CommandExecutor {
             }
           }
         } else {
-          sender.sendMessage(ChatColor.RED + "You must specify a Player and Input for that player");
+          sender.sendMessage(ChatColor.RED + "You must specify a Player and Input");
           return true;
         }
       } else {

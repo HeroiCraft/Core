@@ -37,6 +37,6 @@ ext {
 }
 
 processResources {
-  include 'Reference.java', 'plugin.yml', 'config.yml'
-  filter ReplaceTokens, tokens: resourceTokens
+    include 'Reference.java', 'plugin.yml', 'config.yml'
+    filter ReplaceTokens, tokens: resourceTokens
 }
