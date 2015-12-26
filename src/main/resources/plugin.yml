@@ -24,6 +24,9 @@ commands:
   sudo:
     description: "Chat and use commands as other players"
     usage: "/<command> <player> <input>"
+  speed:
+    description: "Change the speed of flight or walking"
+    usage: "/<command> [speed] [player]"
 
 
 permissions:
@@ -35,6 +38,7 @@ permissions:
       core.fly: true
       core.freeze: true
       core.sudo: true
+      core.speed: true
   core.head:
     description: "Allows you to summon and give player heads"
     children:
@@ -57,3 +61,26 @@ permissions:
     description: "Allows you to freeze and unfreeze other players"
   core.sudo:
     description: "Allows you to execute commands as other players"
+  core.speed:
+    description: "Allows you to change your and others fly and walk speed"
+    children:
+      core.speed.self: true
+      core.speed.others: true
+  core.speed.self:
+    description: "Allows you to change your fly and walk speed"
+    children:
+      core.speed.self.fly: true
+      core.speed.self.walk: true
+  core.speed.others:
+    description: "Allows you to change other's fly and walk speeds"
+    children:
+      core.speed.others.fly: true
+      core.speed.others.walk: true
+  core.speed.self.fly:
+    description: "Allows you to change your fly speed"
+  core.speed.self.walk:
+    description: "Allows you to change your walk speed"
+  core.speed.others.fly:
+    description: "Allows you to change someone else's fly speed"
+  core.speed.others.walk:
+    description: "Allows you to change someone else's walk speed"
