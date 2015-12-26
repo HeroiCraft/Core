@@ -42,6 +42,10 @@ public class CommandSpeed implements CommandExecutor {
           if (sender instanceof Player) {
             Player player = (Player) sender;
             float speed = Float.parseFloat(args[0]);
+            if (speed >= 1){
+              sender.sendMessage(ChatColor.RED + "Speed must be between 0 and 1");
+              return true;
+            }
             if (player.isFlying()) {
               player.setFlySpeed(speed);
               player.sendMessage(ChatColor.GREEN + "Flying at " + speed);
@@ -79,6 +83,10 @@ public class CommandSpeed implements CommandExecutor {
     } else if (args.length == 2) {
       if (args[0].matches("^(?=.+)(?:[1-9]\\d*|0)?(?:\\.\\d+)?$")) {
         float speed = Float.parseFloat(args[0]);
+        if (speed >= 1){
+          sender.sendMessage(ChatColor.RED + "Speed must be between 0 and 1");
+          return true;
+        }
         @SuppressWarnings("deprecation")
         Player player = plugin.getServer().getPlayer(args[1]);
         if (player == null){
