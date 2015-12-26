@@ -5,7 +5,7 @@ apply plugin: 'idea'
 
 //noinspection GroovyUnusedAssignment
 sourceCompatibility = 1.7
-version = '0.5.1'
+version = '0.5.2'
 
 repositories {
   mavenCentral()
