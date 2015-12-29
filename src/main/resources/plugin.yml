@@ -27,6 +27,10 @@ commands:
   speed:
     description: "Change the speed of flight or walking"
     usage: "/<command> [speed] [player]"
+  cmd:
+    description: "Get info about a command"
+    usage: "/<command> <target>"
+    aliases: cmdinfo
 
 
 permissions:
@@ -39,6 +43,7 @@ permissions:
       core.freeze: true
       core.sudo: true
       core.speed: true
+      core.cmd: true
   core.head:
     description: "Allows you to summon and give player heads"
     children:
@@ -84,3 +89,5 @@ permissions:
     description: "Allows you to change someone else's fly speed"
   core.speed.others.walk:
     description: "Allows you to change someone else's walk speed"
+  core.cmd:
+    description: "Allows you to view info about a command"

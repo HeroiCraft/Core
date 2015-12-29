@@ -15,6 +15,7 @@ public class Core extends JavaPlugin {
     this.getCommand("freeze").setExecutor(new CommandFreeze(this));
     this.getCommand("sudo").setExecutor(new CommandSudo(this));
     this.getCommand("speed").setExecutor(new CommandSpeed(this));
+    this.getCommand("cmd").setExecutor(new CommandCmd(this));
   }
 
   @Override
