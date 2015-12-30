@@ -30,15 +30,17 @@ public class FreezeAPI {
   }
 
   public void unfreezeAll(Boolean alert) {
-    plugin.getLogger().info("Unfreezing all players...");
-    for (UUID uuid : frozen) {
-      Player player = plugin.getServer().getPlayer(uuid);
-      unfreezePlayer(player);
-      plugin.getLogger().info("Unfroze " + player.getDisplayName());
-      if (alert) {
-        player.sendMessage(ChatColor.GREEN + "All players are now unfrozen!");
+    if (frozen.size() != 0) {
+      plugin.getLogger().info("Unfreezing all players...");
+      for (UUID uuid : frozen) {
+        Player player = plugin.getServer().getPlayer(uuid);
+        unfreezePlayer(player);
+        plugin.getLogger().fine("Unfroze " + player.getDisplayName());
+        if (alert) {
+          player.sendMessage(ChatColor.GREEN + "All players are now unfrozen!");
+        }
       }
+      plugin.getLogger().info("All players unfrozen!");
     }
-    plugin.getLogger().info("All players unfrozen!");
   }
 }
