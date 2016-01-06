@@ -110,3 +110,7 @@ crashlytics-build.properties
 # Created by .ignore support plugin (hsz.mobi)
 
 build/*
+
+# JRebel
+rebel.xml
+reble-remote.xml

@@ -2,10 +2,22 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'rebel'
 
 //noinspection GroovyUnusedAssignment
 sourceCompatibility = 1.7
 version = '0.6.0'
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath group: 'org.zeroturnaround', name: 'gradle-jrebel-plugin', version: '1.1.2'
+  }
+}
+jar.dependsOn(generateRebel)
 
 repositories {
   mavenCentral()
