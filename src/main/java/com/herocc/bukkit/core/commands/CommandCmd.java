@@ -9,7 +9,6 @@ import org.bukkit.command.PluginCommand;
 
 public class CommandCmd implements CommandExecutor {
   private final Core plugin;
-  private static boolean isBuiltIn = false;
 
   public CommandCmd(Core plugin) {
     this.plugin = plugin;
@@ -28,32 +27,18 @@ public class CommandCmd implements CommandExecutor {
       if (sender.hasPermission("core.cmd")) {
         if (args.length == 1) {
           String command = args[0];
-          PluginCommand pluginCommand = plugin.getServer().getPluginCommand(command);
-          if (pluginCommand == null){
-            Command builtinCommand = plugin.getCommand(command);
-            if (builtinCommand == null) {
-              sender.sendMessage(ChatColor.RED + "That command doesn't seem to exist!");
-              return false;
-            } else {
-              targetCommand = builtinCommand;
-              isBuiltIn = true;
-            }
-          } else {
-            targetCommand = pluginCommand;
-            isBuiltIn = false;
-          }
-
-          if (isBuiltIn){
+          if (isBuiltIn(command)){
             pluginName = "Builtin Command";
             pluginVersion = plugin.getServer().getVersion();
           } else {
+            PluginCommand pluginCommand = plugin.getServer().getPluginCommand(command);
             pluginName = pluginCommand.getPlugin().getName();
             pluginVersion = pluginCommand.getPlugin().getDescription().getVersion();
           }
           commandUsage = targetCommand.getUsage();
           commandPermission = targetCommand.getPermission();
           commandDescription = targetCommand.getDescription();
-          sendCommandInfo(sender);
+          sendCommandInfo(sender, command);
           return true;
         } else {
           sender.sendMessage(ChatColor.RED + "Invalid number of arguments");
@@ -67,8 +52,11 @@ public class CommandCmd implements CommandExecutor {
     return false;
   }
 
-  public void sendCommandInfo(CommandSender sender){
-    sender.sendMessage(ChatColor.GREEN + "Plugin: " + pluginName + " version: " + pluginVersion);
+  public void sendCommandInfo(CommandSender sender, String command){
+    sender.sendMessage(ChatColor.GREEN + "Plugin: " + pluginName + ", version: " + pluginVersion);
+    if (commandUsage.contains("<command>")) {
+      commandUsage = commandUsage.replaceFirst("<command>", command);
+    }
     sender.sendMessage(ChatColor.GREEN + "Usage: " + commandUsage);
     if (commandPermission != null) {
       sender.sendMessage(ChatColor.GREEN + "Permission: " + commandPermission);
@@ -76,5 +64,9 @@ public class CommandCmd implements CommandExecutor {
     if (commandDescription != null){
       sender.sendMessage(ChatColor.GREEN + "Description: " + commandDescription);
     }
+  }
+
+  private boolean isBuiltIn(String command) {
+    return (plugin.getServer().getPluginCommand(command) == null);
   }
 }
