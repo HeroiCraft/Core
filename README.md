@@ -8,3 +8,7 @@ Although you may use this plugin for your server, we will can not guarantee any 
 ##Building:
 
     ./gradlew build
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/HeroiCraft/core/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
