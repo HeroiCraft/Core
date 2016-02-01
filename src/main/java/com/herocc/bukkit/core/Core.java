@@ -1,5 +1,7 @@
 package com.herocc.bukkit.core;
 
+import java.util.logging.Logger;
+
 import com.herocc.bukkit.core.api.FreezeAPI;
 import com.herocc.bukkit.core.commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
