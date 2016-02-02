@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Core extends JavaPlugin {
   public final static Logger log = Logger.getLogger("Minecraft");
   public final static String logPrefix = "[HeroiCraft Core] ";
+  public final static String msgPrefix = "&f[HeroiCraft Core] &f";
   FreezeAPI freeze = new FreezeAPI(this);
   private static Core instance;
 
