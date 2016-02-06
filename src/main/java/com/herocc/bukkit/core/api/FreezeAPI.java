@@ -36,12 +36,12 @@ public class FreezeAPI {
         unfrozenPlayers++;
         Player player = plugin.getServer().getPlayer(uuid);
         unfreezePlayer(player);
-        plugin.log.fine("Unfroze " + player.getDisplayName());
+        plugin.log.fine(Core.logPrefix + "Unfroze " + player.getDisplayName());
         if (alert) {
           player.sendMessage(ChatColor.GREEN + "All players are now unfrozen!");
         }
       }
-      plugin.log.info(unfrozenPlayers + " players unfrozen!");
+      plugin.log.info(Core.logPrefix + unfrozenPlayers + " players unfrozen!");
     }
   }
 }
