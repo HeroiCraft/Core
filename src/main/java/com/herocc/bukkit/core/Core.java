@@ -9,10 +9,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Core extends JavaPlugin {
   public final static Logger log = Logger.getLogger("Minecraft");
   public final static String logPrefix = "[HeroiCraft Core] ";
+  public final static String msgPrefix = "&f[HeroiCraft Core] &f";
   FreezeAPI freeze = new FreezeAPI(this);
+  private static Core instance;
+
+	public static final Core getPlugin() {
+	   return instance;
+	}
 
   @Override
   public void onEnable() {
+    instance = this;
     log.info(logPrefix + " Plugin Version " + this.getDescription().getVersion() + " enabled!");
     this.getCommand("core").setExecutor(new CommandCore(this));
     this.getCommand("head").setExecutor(new CommandHead(this));
