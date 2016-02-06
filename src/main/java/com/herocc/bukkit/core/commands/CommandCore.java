@@ -7,8 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class CommandCore implements CommandExecutor {
-  private final Core plugin;
-  public CommandCore(Core plugin) { this.plugin = plugin; }
+  private final Core plugin = Core.getPlugin();
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

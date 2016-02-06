@@ -9,12 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandSpeed implements CommandExecutor {
-  private final Core plugin;
+  private final Core plugin = Core.getPlugin();
   private final SpeedAPI api = new SpeedAPI();
-
-  public CommandSpeed(Core plugin) {
-    this.plugin = plugin;
-  }
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

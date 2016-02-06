@@ -9,8 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandFreeze implements CommandExecutor {
-  private final Core plugin;
-  public CommandFreeze(Core plugin) { this.plugin = plugin; }
+  private final Core plugin = Core.getPlugin();
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -43,7 +42,7 @@ public class CommandFreeze implements CommandExecutor {
     //Sets walk speed to 0 to freeze, onPlayerEvent is too resource intensive
     @SuppressWarnings("deprecation")
     Player player = plugin.getServer().getPlayer(name);
-    FreezeAPI api = new FreezeAPI(plugin);
+    FreezeAPI api = new FreezeAPI();
     if (player == null) {
       sender.sendMessage(ChatColor.RED + name + " is not online!");
     } else {

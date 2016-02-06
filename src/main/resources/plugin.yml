@@ -1,8 +1,8 @@
-name: HeroiCraft-Core
+name: Core
 version: '@Version@'
 main: com.herocc.bukkit.core.Core
 description: "@Description@"
-authors: [HeroCC]
+authors: ['@Author@']
 
 commands:
   head:
