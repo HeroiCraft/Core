@@ -8,11 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 
 public class CommandCmd implements CommandExecutor {
-  private final Core plugin;
-
-  public CommandCmd(Core plugin) {
-    this.plugin = plugin;
-  }
+  private final Core plugin = Core.getPlugin();
 
   String pluginName;
   String pluginVersion;
@@ -35,9 +31,18 @@ public class CommandCmd implements CommandExecutor {
             pluginName = pluginCommand.getPlugin().getName();
             pluginVersion = pluginCommand.getPlugin().getDescription().getVersion();
           }
-          commandUsage = targetCommand.getUsage();
-          commandPermission = targetCommand.getPermission();
-          commandDescription = targetCommand.getDescription();
+          targetCommand = plugin.getCommand(command);
+          if (targetCommand != null) {
+            if (targetCommand.getUsage() != null) {
+              commandUsage = targetCommand.getUsage();
+            }
+            if (targetCommand.getPermission() != null) {
+              commandPermission = targetCommand.getPermission();
+            }
+            if (targetCommand.getDescription() != null) {
+              commandDescription = targetCommand.getDescription();
+            }
+          }
           sendCommandInfo(sender, command);
           return true;
         } else {
@@ -54,14 +59,14 @@ public class CommandCmd implements CommandExecutor {
 
   public void sendCommandInfo(CommandSender sender, String command){
     sender.sendMessage(ChatColor.GREEN + "Plugin: " + pluginName + ", version: " + pluginVersion);
-    if (commandUsage.contains("<command>")) {
+    if (commandUsage != null && commandUsage.contains("<command>")) {
       commandUsage = commandUsage.replaceFirst("<command>", command);
+      sender.sendMessage(ChatColor.GREEN + "Usage: " + commandUsage);
     }
-    sender.sendMessage(ChatColor.GREEN + "Usage: " + commandUsage);
-    if (commandPermission != null) {
+    if (commandPermission != null && !commandPermission.isEmpty()) {
       sender.sendMessage(ChatColor.GREEN + "Permission: " + commandPermission);
     }
-    if (commandDescription != null){
+    if (commandDescription != null && !commandDescription.isEmpty()){
       sender.sendMessage(ChatColor.GREEN + "Description: " + commandDescription);
     }
   }
