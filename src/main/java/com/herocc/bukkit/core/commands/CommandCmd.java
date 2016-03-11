@@ -15,7 +15,6 @@ public class CommandCmd implements CommandExecutor {
   String commandUsage;
   String commandPermission;
   String commandDescription;
-  Command targetCommand;
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -23,30 +22,21 @@ public class CommandCmd implements CommandExecutor {
       if (sender.hasPermission("core.cmd")) {
         if (args.length == 1) {
           String command = args[0];
-          if (isBuiltIn(command)){
-            pluginName = "Builtin Command";
-            pluginVersion = plugin.getServer().getVersion();
-          } else {
+          if (plugin.getCommand(command) != null) {
             PluginCommand pluginCommand = plugin.getServer().getPluginCommand(command);
             pluginName = pluginCommand.getPlugin().getName();
             pluginVersion = pluginCommand.getPlugin().getDescription().getVersion();
+            commandUsage = pluginCommand.getUsage();
+            commandPermission = pluginCommand.getPermission();
+            commandDescription = pluginCommand.getDescription();
+            sendCommandInfo(sender, command);
+            return true;
+          } else {
+            sender.sendMessage(ChatColor.RED + "That command doesn't exist or is Builtin!");
+            return true;
           }
-          targetCommand = plugin.getCommand(command);
-          if (targetCommand != null) {
-            if (targetCommand.getUsage() != null) {
-              commandUsage = targetCommand.getUsage();
-            }
-            if (targetCommand.getPermission() != null) {
-              commandPermission = targetCommand.getPermission();
-            }
-            if (targetCommand.getDescription() != null) {
-              commandDescription = targetCommand.getDescription();
-            }
-          }
-          sendCommandInfo(sender, command);
-          return true;
         } else {
-          sender.sendMessage(ChatColor.RED + "Invalid number of arguments");
+          sender.sendMessage(ChatColor.RED + "Invalid number of arguments!");
           return true;
         }
       } else {
@@ -59,7 +49,7 @@ public class CommandCmd implements CommandExecutor {
 
   public void sendCommandInfo(CommandSender sender, String command){
     sender.sendMessage(ChatColor.GREEN + "Plugin: " + pluginName + ", version: " + pluginVersion);
-    if (commandUsage != null && commandUsage.contains("<command>")) {
+    if (commandUsage != null && !commandUsage.isEmpty()) {
       commandUsage = commandUsage.replaceFirst("<command>", command);
       sender.sendMessage(ChatColor.GREEN + "Usage: " + commandUsage);
     }
@@ -69,9 +59,5 @@ public class CommandCmd implements CommandExecutor {
     if (commandDescription != null && !commandDescription.isEmpty()){
       sender.sendMessage(ChatColor.GREEN + "Description: " + commandDescription);
     }
-  }
-
-  private boolean isBuiltIn(String command) {
-    return (plugin.getServer().getPluginCommand(command) == null);
   }
 }
