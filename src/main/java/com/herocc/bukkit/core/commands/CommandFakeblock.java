@@ -1,17 +1,31 @@
 package com.herocc.bukkit.core.commands;
 
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import com.herocc.bukkit.core.Core;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class CommandFakeblock implements CommandExecutor {
-  private final Core plugin = Core.getPlugin();
-  
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (cmd.getName().equalsIgnoreCase("fakeblock")) {
-    sender.sendMessage("Testing..");
-  }
+	private final Core plugin = Core.getPlugin();
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] arg) {
+		if (cmd.getName().equalsIgnoreCase("fakeblock")) {
+	        if (sender.hasPermission("core.head.get")) {
+	        	Player player = (Player) sender;
+	        	player.sendBlockChange(player.getLocation(), Material.WOOL, (byte) 0);
+	        	sender.sendMessage("The block has changed!");
+	        } else {
+	        	sender.sendMessage(ChatColor.RED + "Sorry, You do not have permission to use this command!");
+	        }
+		}
+		return false;
+	}
 
 }
