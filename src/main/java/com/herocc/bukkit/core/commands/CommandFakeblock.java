@@ -19,7 +19,7 @@ public class CommandFakeblock implements CommandExecutor {
 	        if (sender.hasPermission("core.head.get")) {
 	        	Player player = (Player) sender;
 	        	player.sendBlockChange(player.getLocation(), Material.WOOL, (byte) 0);
-	        	sender.sendMessage("The block has changed!");
+	        	sender.sendMessage(ChatColor.GREEN + "The block has changed!");
 	        } else {
 	        	sender.sendMessage(ChatColor.RED + "Sorry, You do not have permission to use this command!");
 	        }
