@@ -1,0 +1,30 @@
+package com.herocc.bukkit.core.commands;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+
+import com.herocc.bukkit.core.Core;
+
+public class ServerInfoCommand implements CommandExecutor {
+  private final Core plugin = Core.getPlugin();
+
+  @Override
+  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    if (cmd.getName().equalsIgnoreCase("serverinfo")) {
+      if (sender.hasPermission("core.serverinfo")) {
+      sender.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "+--------" + ChatColor.AQUA + ChatColor.BOLD + "SERVER INFO" + ChatColor.DARK_GRAY + ChatColor.STRIKETHROUGH + "-------+");
+      sender.sendMessage(ChatColor.GOLD + "Server Name: " + ChatColor.RED + Bukkit.getServer().getServerName());
+      sender.sendMessage(ChatColor.GOLD + "Server Version: " + ChatColor.RED + Bukkit.getServer().getBukkitVersion());
+      sender.sendMessage(ChatColor.GOLD + "Server Mod: " + ChatColor.RED + Bukkit.getServer().getName());
+      sender.sendMessage(ChatColor.GOLD + "Server IP: " + ChatColor.RED + Bukkit.getServer().getIp());
+      sender.sendMessage(ChatColor.GOLD + "Server Port: " + ChatColor.RED + Bukkit.getServer().getPort());
+      return true;
+      } else {
+          sender.sendMessage(ChatColor.RED + "Sorry, you don't have permission to view server info!");}
+      }
+    return false;
+  }
+}
