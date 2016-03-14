@@ -23,6 +23,7 @@ public class Core extends JavaPlugin {
     this.getCommand("sudo").setExecutor(new CommandSudo());
     this.getCommand("speed").setExecutor(new CommandSpeed());
     this.getCommand("cmd").setExecutor(new CommandCmd());
+    this.getCommand("fakeblock").setExecutor(new CommandFakeblock());
   }
 
   @Override
