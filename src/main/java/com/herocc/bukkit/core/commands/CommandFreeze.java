@@ -48,11 +48,11 @@ public class CommandFreeze implements CommandExecutor {
     } else {
       if (FreezeAPI.frozen.contains(player.getUniqueId())) {
         api.unfreezePlayer(player);
-        sender.sendMessage(ChatColor.DARK_GREEN + "Unfroze " + ChatColor.GREEN + player.getDisplayName() + ChatColor.GREEN + "!");
+        sender.sendMessage(ChatColor.GREEN + "Unfroze " + ChatColor.GREEN + player.getDisplayName() + ChatColor.GREEN + "!");
         player.sendMessage(ChatColor.GREEN + "You are now unfrozen!");
       } else {
         api.freezePlayer(player);
-        sender.sendMessage(ChatColor.DARK_GREEN + "Froze " + ChatColor.GREEN + player.getDisplayName() + ChatColor.GREEN + "!");
+        sender.sendMessage(ChatColor.GREEN + "Froze " + ChatColor.GREEN + player.getDisplayName() + ChatColor.GREEN + "!");
         player.sendMessage(ChatColor.GREEN + "You were frozen by " + sender.getName() + "!");
       }
     }
