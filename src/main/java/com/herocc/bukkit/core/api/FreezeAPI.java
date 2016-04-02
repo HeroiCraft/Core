@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class FreezeAPI {
-  private final Core plugin;
-  public FreezeAPI(Core plugin) { this.plugin = plugin; }
+  private final Core plugin = Core.getPlugin();
 
   PotionEffect noJump = PotionEffectType.JUMP.createEffect(999999, 128); // 128 = -1, prevents jumping
   public static List<UUID> frozen = new ArrayList<>();
@@ -37,12 +36,12 @@ public class FreezeAPI {
         unfrozenPlayers++;
         Player player = plugin.getServer().getPlayer(uuid);
         unfreezePlayer(player);
-        plugin.getLogger().fine("Unfroze " + player.getDisplayName());
+        plugin.log.fine(Core.logPrefix + "Unfroze " + player.getDisplayName());
         if (alert) {
           player.sendMessage(ChatColor.GREEN + "All players are now unfrozen!");
         }
       }
-      plugin.getLogger().info(unfrozenPlayers + " players unfrozen!");
+      plugin.log.info(Core.logPrefix + unfrozenPlayers + " players unfrozen!");
     }
   }
 }

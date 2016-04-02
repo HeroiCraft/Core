@@ -1,10 +1,8 @@
-main: com.herocc.bukkit.core.Core
-
-name: '@Name@'
+name: Core
 version: '@Version@'
+main: com.herocc.bukkit.core.Core
 description: "@Description@"
-
-author: '@Author@'
+authors: ['@Author@']
 
 commands:
   head:
@@ -31,6 +29,10 @@ commands:
     description: "Get info about a command"
     usage: "/<command> <target>"
     aliases: cmdinfo
+  fakeblock:
+    description: "Make the block you are pointing at another block just for you"
+    usage: "/<command> <blocktype> [<x> <y> <z> [world]]"
+    aliases: fake, fb
 
 
 permissions:
@@ -44,6 +46,7 @@ permissions:
       core.sudo: true
       core.speed: true
       core.cmd: true
+      core.fake: true
   core.head:
     description: "Allows you to summon and give player heads"
     children:
@@ -91,3 +94,5 @@ permissions:
     description: "Allows you to change someone else's walk speed"
   core.cmd:
     description: "Allows you to view info about a command"
+  core.fake:
+    description: "Allows you to set a block to another kind of block temporarily"

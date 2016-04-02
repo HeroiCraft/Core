@@ -11,9 +11,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class CommandHead implements CommandExecutor {
-  private final Core plugin;
+  private final Core plugin = Core.getPlugin();
   String skullName;
-  public CommandHead(Core plugin) { this.plugin = plugin; }
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

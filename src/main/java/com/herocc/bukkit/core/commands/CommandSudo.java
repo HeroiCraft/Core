@@ -8,11 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandSudo implements CommandExecutor {
-  private final Core plugin;
-
-  public CommandSudo(Core plugin) {
-    this.plugin = plugin;
-  }
+  private final Core plugin = Core.getPlugin();
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

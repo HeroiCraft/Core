@@ -8,8 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandFly implements CommandExecutor {
-  private final Core plugin;
-  public CommandFly(Core plugin) { this.plugin = plugin; }
+  private final Core plugin = Core.getPlugin();
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
