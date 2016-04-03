@@ -2,6 +2,7 @@ package com.herocc.bukkit.core;
 
 import com.herocc.bukkit.core.api.FreezeAPI;
 import com.herocc.bukkit.core.commands.*;
+import com.herocc.bukkit.core.util.Reference;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
@@ -9,13 +10,13 @@ import java.util.logging.Logger;
 public class Core extends JavaPlugin {
   public final static Logger log = Logger.getLogger("Minecraft");
   public final static String logPrefix = "[Core] ";
-  FreezeAPI freeze = new FreezeAPI();
+  private FreezeAPI freeze = new FreezeAPI();
   private static Core instance;
 
   @Override
   public void onEnable() {
     instance = this;
-    log.info(logPrefix + " v. " + this.getDescription().getVersion() + " enabled!");
+    log.info(logPrefix + "v. " + Reference.VERSION + ", build " + Reference.BUILDTIME + " enabled!");
     this.getCommand("core").setExecutor(new CommandCore());
     this.getCommand("head").setExecutor(new CommandHead());
     this.getCommand("fly").setExecutor(new CommandFly());

@@ -3,6 +3,7 @@ version: '@Version@'
 main: com.herocc.bukkit.core.Core
 description: "@Description@"
 authors: ['@Author@']
+buildtime: '@BuildTime@'
 
 commands:
   head:

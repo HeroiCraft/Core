@@ -1,8 +1,13 @@
 import org.apache.tools.ant.filters.ReplaceTokens
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'rebel'
+
+Calendar calendar = Calendar.getInstance();
+DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
 
 //noinspection GroovyUnusedAssignment
 sourceCompatibility = 1.7
@@ -44,7 +49,8 @@ ext {
       'Name'   : rootProject.name,
       'Description': description,
       'Version': version,
-      'Author' : author
+      'Author' : author,
+      'BuildTime' : dateFormat.format(calendar.getTime())
   ];
 }
 
