@@ -41,7 +41,7 @@ public class CommandFakeblock implements CommandExecutor {
         }
         if (Material.getMaterial(args[0]) != null) {
           setFakeBlock(Material.getMaterial(args[0]), loc);
-          sender.sendMessage(ChatColor.GREEN + "Changed Block at " + loc.toString() + " to " + Material.getMaterial(args[0]).toString());
+          sender.sendMessage(ChatColor.GREEN + "Changed Block at X" + loc.getBlockX() + " Y" + loc.getBlockY() + " Z" + loc.getBlockZ() + " to " + Material.getMaterial(args[0]).toString());
           return true;
         } else {
           sender.sendMessage(ChatColor.RED + "Invalid material: " + args[0]);

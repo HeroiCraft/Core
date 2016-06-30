@@ -32,7 +32,7 @@ commands:
   fakeblock:
     description: "Make the block you are pointing at another block just for you"
     usage: "/<command> <blocktype> [<x> <y> <z> [world]]"
-    aliases: fake, fb
+    aliases: [fake, fb]
 
 
 permissions:
