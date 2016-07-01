@@ -1,19 +1,23 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
 apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'rebel'
+apply plugin: 'idea' 
+apply plugin: 'rebel' // Live code modifications and debugging
+apply plugin: 'com.bmuschko.nexus' // For Nexus Deploying
 
 //noinspection GroovyUnusedAssignment
 sourceCompatibility = 1.7
-version = '0.7.0'
+version = '0.7.1-SNAPSHOT'
+group = 'com.herocc.bukkit'
 
 buildscript {
   repositories {
     mavenCentral()
+    jcenter()
   }
 
   dependencies {
+    classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
     classpath group: 'org.zeroturnaround', name: 'gradle-jrebel-plugin', version: '1.1.2'
   }
 }
@@ -51,4 +55,10 @@ ext {
 processResources {
     include 'Reference.java', 'plugin.yml', 'config.yml'
     filter ReplaceTokens, tokens: resourceTokens
+}
+
+nexus {
+  sign = false
+  repositoryUrl = 'https://repo.herocc.com/repository/maven-releases/'
+  snapshotRepositoryUrl = 'https://repo.herocc.com/repository/maven-snapshots/'
 }
