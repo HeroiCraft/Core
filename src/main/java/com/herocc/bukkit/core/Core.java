@@ -15,7 +15,7 @@ public class Core extends JavaPlugin {
   @Override
   public void onEnable() {
     instance = this;
-    log.info(logPrefix + " v. " + this.getDescription().getVersion() + " enabled!");
+    log.info(logPrefix + "v. " + this.getDescription().getVersion() + " enabled!");
     this.getCommand("core").setExecutor(new CommandCore());
     this.getCommand("head").setExecutor(new CommandHead());
     this.getCommand("fly").setExecutor(new CommandFly());
