@@ -1,4 +1,4 @@
-#Core [![License](https://img.shields.io/badge/License-LGPLv2.1-blue.svg?style=flat-square)](https://github.com/HeroiCraft/Core/blob/master/LICENSE.md) 
+# Core [![License](https://img.shields.io/badge/License-LGPLv2.1-blue.svg?style=flat-square)](https://github.com/HeroiCraft/Core/blob/master/LICENSE.md) 
 
 This is the Repo for Core, a plugin by HeroCC for HeroiCraft
 
@@ -11,7 +11,7 @@ Builds can be found on our CI server [here](http://ci.herocc.com/job/Core/)
 
 ---
 
-##Building:
+## Building:
 
     ./gradlew clean build
 
