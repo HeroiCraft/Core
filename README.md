@@ -6,7 +6,7 @@ Although you may use this plugin for your server, we will can not guarantee any 
 
 Builds can be found on our CI server [here](http://ci.herocc.com/job/Core/)
 
-* Codeship: [![Build Status on CodeShip](https://img.shields.io/codeship/0e8eae70-6a51-0133-d9e6-62b058ef9788/master.svg?style=flat-square)](https://codeship.com/projects/114838) 
+* CircleCI: [![Build Status on CircleCI](https://img.shields.io/circleci/project/github/HeroiCraft/Core/master.svg?style=flat-square)](https://codeship.com/projects/114838) 
 * HeroCC's CI: [![HeroCC's CI Build Status](https://img.shields.io/jenkins/s/http/ci.herocc.com/core.svg?style=flat-square)](http://ci.herocc.com/job/Core/)
 
 ---
